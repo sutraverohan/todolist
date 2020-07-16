@@ -1,28 +1,84 @@
-<%- include("header") -%>
+<%- include('partials/header1') -%>
 
-  <div class="box" id="heading">
-    <h1> <%= listTitle %> </h1>
-  </div>
+<body>
+  <div class="row">
+    <div class="col-md-1">
 
-  <div class="box">
+    </div>
+    <div class="col-md-4">
 
 
-  <%  newListItems.forEach(function(item){ %>
-
-    <form action="/delete" method="post">
-      <div class="item">
-        <input type="checkbox" name="checkbox" value="<%=item._id%>" onChange="this.form.submit()">
-        <p><%=item.name%></p>
+      <div class=" box" id="heading">
+        <h1> <%= WorkTitle %> </h1>
       </div>
-      <input type="hidden" name="listName" value="<%= listTitle %>"></input>
-    </form>
-  <%  }) %>
+
+      <div class="box">
 
 
-      <form class="item" action="/" method="post">
-        <input type="text" name="newItem" placeholder="New Item" autocomplete="off">
-        <button type="submit" name="list" value="<%= listTitle %>">+</button>
-      </form>
+        <%  newWorkItems.forEach(function(item){ %>
+
+        <form action="/deletework" method="post">
+          <div class="item">
+            <input type="checkbox" name="checkbox" value="<%=item._id%>" onChange="this.form.submit()">
+            <a class="btn btn-light btn-lg butt" href="/work/<%=item.name%>" role="button"><%=item.name%></a>
+
+
+          </div>
+          <input type="hidden" name="workName" value="<%= WorkTitle %>"></input>
+        </form>
+        <%  }) %>
+
+
+        <form class="item" action="/work" method="post">
+          <input type="text" name="newItem2" placeholder="Add New Project" autocomplete="off">
+          <button type="submit" name="work" value="<%= WorkTitle %>">+</button>
+        </form>
+      </div>
+    </div>
+    <div class="col-md-1">
+
+    </div>
+    <div class="col-md-5">
+
+
+      <div class="box" id="heading">
+        <h1> <%= listTitle %> </h1>
+      </div>
+
+
+      <div class="box">
+
+        <%  newListItems.forEach(function(item){ %>
+
+
+        <form action="/deleteitems" method="post">
+          <div class="item">
+            <input type="checkbox" name="checkbox" value="<%=item._id%>" onChange="this.form.submit()">
+            <p><%=item.name%></p>
+          </div>
+          <input type="hidden" name="listName" value="<%= listTitle %>"></input>
+        </form>
+
+        <%  }) %>
+
+
+        <form class="item" action="/list" method="post">
+          <input type="text" name="newItem" placeholder="Add New Item" autocomplete="off">
+          <button type="submit" name="list" value="<%= listTitle %>">+</button>
+        </form>
+      </div>
+    </div>
+    <div class="col-md-1">
+
+    </div>
+  </div>
+  <div class="">
+    <ul>
+      <li>You can add a project in the left container</li>
+      <li>You can add a work to be done in a particular project in the right container</li>
+    </ul>
+
+
   </div>
 
-<%- include("footer") -%>
+  <%- include('partials/footer') -%>
