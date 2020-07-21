@@ -14,9 +14,15 @@ h1 {
   padding: 10px;
 }
 
-
+.full{
+  padding-top: 8%;
+}
+.full2{
+  padding-left: 30px;
+}
 .box {
   /* max-width: 400px; */
+
   margin: 50px auto;
   background: #27293d;
   border-radius: 5px;
