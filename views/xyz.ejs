@@ -9,18 +9,14 @@
         <div class="card-body">
 
           <!-- Makes POST request to /login route -->
-          <form action="/login" method="POST">
+          <form action="/forget" method="POST">
             <div class="form-group">
               <label for="email">Email</label>
               <input type="email" class="form-control" name="username">
             </div>
-            <div class="form-group">
-              <label for="password">Password</label>
-              <input type="password" class="form-control" name="password">
-              <p style="color: red;">*wrong password</p>
-            </div>
-            <a class="btn btn-dark" href="/forget" role="button">Forget Password</a>
-            <button type="submit" class="btn btn-dark">Login</button>
+
+
+            <button type="submit" class="btn btn-dark">Request Password</button>
           </form>
 
         </div>

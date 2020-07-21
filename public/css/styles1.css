@@ -24,6 +24,9 @@ font-weight: bolder;
     line-height: 1.2;
 
 }
+.warn{
+  color: red;
+}
 p{
   font-weight: bold;
   font-size: 1.2rem;

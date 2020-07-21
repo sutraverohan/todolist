@@ -14,7 +14,7 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(express.static("public"));
 
-mongoose.connect("mongodb+srv://admin-rohan:rohan2001@cluster0-1jmdi.mongodb.net/todolistDB?retryWrites=true&w=majority", {useNewUrlParser: true});
+ mongoose.connect("mongodb+srv://admin-rohan:rohan2001@cluster0-1jmdi.mongodb.net/UsertodolistDB?retryWrites=true&w=majority", {useNewUrlParser: true});
 // mongoose.connect("mongodb://localhost:27017/userDB", {
 //   userNewUrlParser: true
 // });
@@ -92,22 +92,23 @@ app.post("/register", function(req, res) {
   User.findOne({
     email: newUser.email},function(err,foundUser){
       if(foundUser){
-        res.render("login");
+        res.render("yeslogin");
+
       }else{
         newUser.save(function(err) {
           if (err) {
             console.log(err);
           } else {
             res.render("login");
+              // res.redirect("/work");
           }
         });
       }
     });
 
 });
-if (flag == 0) {
+
   var currentUser = "2@g.com";
-}
  var currentlist = "Personal"
 app.post("/login", function(req, res) {
   const username = req.body.username;
@@ -124,10 +125,37 @@ app.post("/login", function(req, res) {
         flag == 1;
         currentUser = foundUser.email;
         if (foundUser.password === password) {
+
           res.redirect("/work");
         }else{
           res.render("nologin");
         }
+      }else{
+        res.render("yesuser");
+
+      }
+    }
+  });
+});
+app.get("/forget",function(req,res){
+  res.render("xyz");
+});
+
+app.post("/forget",function(req,res){
+
+  const username = req.body.username;
+
+  User.findOne({
+    email: username
+  }, function(err, foundUser) {
+
+    if (err) {
+      console.log(err);
+    } else {
+      if(foundUser){
+        res.render("notlogin",{Pass: foundUser.password});
+      }else{
+        console.log("no user");
       }
     }
   });
